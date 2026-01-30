@@ -1,5 +1,10 @@
+# =========================
+# Secrets / credentials
+# =========================
 .env
 .env.*
+**/.env.example
+
 *.key
 *.pem
 *.crt
@@ -7,22 +12,36 @@
 *.ovpn
 *.token
 *.secret
+
 id_rsa*
 id_ed25519*
 authorized_keys
 known_hosts
 
+# =========================
+# WireGuard / VPN configs
+# =========================
 wg*.conf
 wireguard/*.conf
+
+# =========================
+# Network captures
+# =========================
 *.pcap
 *.pcapng
 
+# =========================
+# Databases / state
+# =========================
 *.db
 *.sqlite
 *.sqlite3
 data/
 state/
 
+# =========================
+# Archives / backups
+# =========================
 backups/
 *.tar
 *.tar.gz
@@ -30,9 +49,15 @@ backups/
 *.zip
 *.7z
 
+# =========================
+# Logs
+# =========================
 *.log
 logs/
 
+# =========================
+# OS / editor clutter
+# =========================
 .DS_Store
 Thumbs.db
 .idea/
@@ -40,8 +65,18 @@ Thumbs.db
 *.swp
 *~
 
+# =========================
+# Diagram tool artifacts
+# =========================
 *.drawio.bkp
 
+# =========================
+# Docker env files (real values)
+# =========================
 docker/**/.env
 docker/**/.env.*
-!.env.example
+
+# =========================
+# Script outputs
+# =========================
+snapshots/
