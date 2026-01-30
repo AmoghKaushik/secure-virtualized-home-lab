@@ -41,7 +41,7 @@ It is intentionally **documentation-first**: the goal is to capture *how and why
 
 - `docs/` — architecture notes, networking model, security posture, operational runbooks
 - `docs/adr/` — Architecture Decision Records (why decisions were made)
-- `docs/diagrams/` — sanitized diagrams (editable sources + exports)
+- `docs/diagrams/` — sanitized diagrams (Mermaid)
 - `config/` — **example-only** configuration templates (`*.example`)
 - `docker/` — container stack templates with `.env.example` files
 - `scripts/` — safety checks and helper scripts (sanitized)
@@ -75,7 +75,7 @@ Only sanitized examples and placeholders are committed. See `SECURITY.md`.
 - Proxmox VE / KVM
 - WireGuard
 - Docker
-- Firewalling (nftables/iptables patterns, sanitized)
+- Firewalling via iptables (frontend; backend varies: legacy on host, nf_tables on VMs)
 
 ---
 
