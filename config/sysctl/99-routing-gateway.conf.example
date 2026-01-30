@@ -1,0 +1,6 @@
+# Routing/sysctl for VPN gateway (example)
+# Place at: /etc/sysctl.d/99-routing-gateway.conf
+# Apply: sudo sysctl --system
+
+# Enable IPv4 forwarding for routing between interfaces (e.g., WireGuard gateway)
+net.ipv4.ip_forward = 1

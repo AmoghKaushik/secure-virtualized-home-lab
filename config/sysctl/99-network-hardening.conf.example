@@ -1,0 +1,23 @@
+# Network/sysctl hardening (example)
+# Place at: /etc/sysctl.d/99-network-hardening.conf
+# Apply: sudo sysctl --system
+
+# Basic spoofing protection
+net.ipv4.conf.all.rp_filter = 1
+net.ipv4.conf.default.rp_filter = 1
+
+# Ignore ICMP redirects f
+net.ipv4.conf.all.accept_redirects = 0
+net.ipv4.conf.default.accept_redirects = 0
+
+# Do not send ICMP redirects
+net.ipv4.conf.all.send_redirects = 0
+net.ipv4.conf.default.send_redirects = 0
+
+# Enable SYN cookies
+net.ipv4.tcp_syncookies = 1
+
+# Routing:
+# - Most VMs should keep forwarding disabled (0)
+# - Gateways/routers should set forwarding in a separate file (see 99-routing-gateway.conf)
+net.ipv4.ip_forward = 0

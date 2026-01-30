@@ -1,0 +1,18 @@
+# Example WireGuard config (sanitized)
+# Replace all placeholders. Do NOT commit real keys.
+
+[Interface]
+Address = 10.0.0.1/24
+ListenPort = 51820
+PrivateKey = <SERVER_PRIVATE_KEY>
+
+# Optional: enable routing between VPN and LAN (if acting as gateway)
+# PostUp / PostDown are intentionally omitted here; manage firewall separately.
+
+# Example peer (client)
+[Peer]
+PublicKey = <CLIENT_PUBLIC_KEY>
+AllowedIPs = 10.0.0.2/32
+# Endpoint is only needed on the client config, not on the server
+# PersistentKeepalive recommended on clients behind NAT:
+# PersistentKeepalive = 25

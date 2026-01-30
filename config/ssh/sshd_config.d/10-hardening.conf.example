@@ -1,0 +1,27 @@
+# sshd hardening snippet (example)
+# Intended for /etc/ssh/sshd_config.d/10-hardening.conf on modern OpenSSH.
+# Validate with: sudo sshd -t
+
+Protocol 2
+
+# Authentication
+PasswordAuthentication no
+KbdInteractiveAuthentication no
+ChallengeResponseAuthentication no
+PermitRootLogin no
+PubkeyAuthentication yes
+
+# Allow only specific users (recommended; replace)
+AllowUsers <your-admin-user>
+
+# Reduce attack surface
+X11Forwarding no
+AllowTcpForwarding no
+PermitTunnel no
+GatewayPorts no
+
+# Limits
+MaxAuthTries 3
+LoginGraceTime 30
+ClientAliveInterval 60
+ClientAliveCountMax 2

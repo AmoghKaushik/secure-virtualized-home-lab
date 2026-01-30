@@ -1,0 +1,18 @@
+*filter
+:INPUT DROP [0:0]
+:FORWARD DROP [0:0]
+:OUTPUT ACCEPT [0:0]
+
+-A INPUT -i lo -j ACCEPT
+-A INPUT -m conntrack --ctstate ESTABLISHED,RELATED -j ACCEPT
+
+# WireGuard (if this node terminates WG)
+-A INPUT -p udp --dport 51820 -j ACCEPT
+
+# SSH only from VPN subnet (placeholder)
+-A INPUT -p tcp --dport 22 -s 10.0.0.0/24 -j ACCEPT
+
+# Node exporter only from trusted subnet (placeholder)
+-A INPUT -p tcp --dport 9100 -s 10.0.0.0/24 -j ACCEPT
+
+COMMIT
