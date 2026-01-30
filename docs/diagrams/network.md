@@ -1,3 +1,7 @@
+# Network overview
+
+High-level trust zones and VPN-only remote access path. All identifiers are placeholders.
+
 ```mermaid
 flowchart TB
   %% Trust zones
@@ -16,13 +20,13 @@ flowchart TB
 
   subgraph VPN["VPN Network (Trusted)"]
     WGClients["WireGuard Clients<br/>(Laptop/Phone)"]
-    WG["WireGuard Endpoint<br/>(Infra Gateway VM)"]
+    GW["gw-vpn (Gateway VM)<br/>WireGuard endpoint"]
   end
 
   subgraph SRV["Service Zone (Isolated VMs)"]
-    SVC["Service VM(s)<br/>(Docker workloads)"]
-    MON["Monitoring VM<br/>(Metrics/Dashboards)"]
-    GPU["GPU VM(s)<br/>(Passthrough workloads)"]
+    SVC["svc-* (Service VM(s))<br/>(Docker workloads)"]
+    MON["mon (Monitoring VM)<br/>(Metrics/Dashboards)"]
+    GPU["gpu (GPU VM(s))<br/>(Passthrough workloads)"]
   end
 
   %% Connectivity
@@ -30,8 +34,8 @@ flowchart TB
   Router --> Host
   Host --> Sw
 
-  WGClients -->|Encrypted tunnel| WG
-  WG --> Sw
+  WGClients -->|Encrypted tunnel| GW
+  GW --> Sw
 
   Sw --> SVC
   Sw --> MON
@@ -44,7 +48,7 @@ flowchart TB
   N2["Policy: Host is control plane<br/>App services run in VMs/containers"]:::note
   N3["Policy: East–west traffic allowlisted<br/>(service ports + limited sources)"]:::note
 
-  WG --- N1
+  GW --- N1
   Host --- N2
   Sw --- N3
 ```
