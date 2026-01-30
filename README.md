@@ -50,6 +50,7 @@ It is intentionally **documentation-first**: the goal is to capture *how and why
 
 ## How to Use This Repository
 
+- Start with [`docs/README.md`](docs/README.md) for the documentation index
 - Start with `docs/architecture.md` for the overall model
 - Read `docs/networking.md` and `docs/security.md` for the access and hardening approach
 - Use `docs/adr/` to understand the trade-offs behind key decisions
